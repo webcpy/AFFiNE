@@ -3,12 +3,8 @@ let binding;
 try {
   binding = require('./server-native.node');
 } catch {
-  binding =
-    process.arch === 'arm64'
-      ? require('./server-native.arm64.node')
-      : process.arch === 'arm'
-        ? require('./server-native.armv7.node')
-        : require('./server-native.x64.node');
+  const arch = process.arch === 'arm64' ? 'arm64' : 'x64';
+  binding = require(`./server-native.${arch}.node`);
 }
 
 module.exports = binding;

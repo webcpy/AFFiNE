@@ -115,7 +115,7 @@ export class EdgelessNoteMenu extends EdgelessToolbarToolMixin(LitElement) {
           <div class="button-group-container">
             <edgeless-tool-icon-button
               .activeMode=${'background'}
-              .tooltip=${'Image'}
+              .tooltip=${'图片'}
               @click=${this._addImages}
               .disabled=${this._imageLoading}
             >
@@ -125,7 +125,7 @@ export class EdgelessNoteMenu extends EdgelessToolbarToolMixin(LitElement) {
             <edgeless-tool-icon-button
               .activeMode=${'background'}
               .tooltip=${html`<affine-tooltip-content-with-shortcut
-                data-tip="${'Link'}"
+                data-tip="${'链接'}"
                 data-shortcut="${'@'}"
               ></affine-tooltip-content-with-shortcut>`}
               @click=${() => {
@@ -137,7 +137,7 @@ export class EdgelessNoteMenu extends EdgelessToolbarToolMixin(LitElement) {
 
             <edgeless-tool-icon-button
               .activeMode=${'background'}
-              .tooltip=${'File'}
+              .tooltip=${'文件'}
               @click=${async () => {
                 const file = await openSingleFileWith();
                 if (!file) return;

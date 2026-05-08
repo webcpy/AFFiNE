@@ -92,7 +92,7 @@ export class EdgelessNoteToolButton extends QuickToolMixin(LitElement) {
         .tooltip=${this._noteMenu
           ? ''
           : html`<affine-tooltip-content-with-shortcut
-              data-tip="${'Note'}"
+              data-tip="${'笔记'}"
               data-shortcut="${'N'}"
             ></affine-tooltip-content-with-shortcut>`}
         .tooltipOffset=${17}
@@ -116,5 +116,5 @@ export class EdgelessNoteToolButton extends QuickToolMixin(LitElement) {
   accessor childType = 'text';
 
   @state()
-  accessor tip = 'Text';
+  accessor tip = '文本';
 }

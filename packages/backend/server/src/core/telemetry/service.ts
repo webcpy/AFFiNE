@@ -188,7 +188,7 @@ export class TelemetryService {
     );
 
     this.logger.log(
-      `Telemetry allowed origins updated: ${this.allowedOrigins.join(', ')}`
+      `Telemetry allowed origins updated111111: ${this.allowedOrigins.join(', ')}`
     );
 
     this.ga4Client = new Ga4Client(

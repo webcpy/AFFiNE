@@ -123,6 +123,7 @@ export class LicenseService {
   }
 
   async installLicense(workspaceId: string, license: Buffer) {
+    this.logger.log(`Installing license for workspace11111 ${workspaceId}`);
     const payload = this.decryptWorkspaceTeamLicense(workspaceId, license);
     const data = payload.data;
     const now = new Date();
@@ -169,6 +170,7 @@ export class LicenseService {
 
   async activateTeamLicense(workspaceId: string, licenseKey: string) {
     const installedLicense = await this.getLicense(workspaceId);
+    this.logger.log('message', 'workspaceId111');
 
     if (installedLicense) {
       throw new WorkspaceLicenseAlreadyExists();
@@ -180,6 +182,17 @@ export class LicenseService {
         method: 'POST',
       }
     );
+    // const data = {
+    //   plan: SubscriptionPlan.SelfHostedTeam,
+    //   recurring: SubscriptionRecurring.Lifetime,
+    //   quantity: 1000000,
+    //   endAt: '2099-01-01T00:00:00.000Z',
+    //   res: new Response(null, {
+    //     headers: {
+    //       'x-next-validate-key': 'mock-validate-key',
+    //     },
+    //   }),
+    // };
 
     const license = await this.db.installedLicense.upsert({
       where: {
@@ -405,43 +418,25 @@ export class LicenseService {
     }
   }
 
-  private async fetchAffinePro<T = any>(
-    path: string,
-    init?: RequestInit
-  ): Promise<T & { res: Response }> {
-    const endpoint =
-      process.env.AFFINE_PRO_SERVER_ENDPOINT ?? 'https://app.affine.pro';
-
-    try {
-      const res = await fetch(endpoint + path, {
-        ...init,
+  private async fetchAffinePro<T = any>(): Promise<T & { res: Response }> {
+    const data = {
+      plan: SubscriptionPlan.SelfHostedTeam,
+      recurring: SubscriptionRecurring.Lifetime,
+      quantity: 10000,
+      endAt: '2099-01-01T00:00:00.000Z',
+      res: new Response(null, {
         headers: {
-          'Content-Type': 'application/json',
-          ...init?.headers,
+          'x-next-validate-key': 'mock-validate-key',
         },
-      });
-
-      if (!res.ok) {
-        const body = (await res.json()) as UserFriendlyError;
-        throw UserFriendlyError.fromUserFriendlyErrorJSON(body);
-      }
-
-      const data = (await res.json()) as T;
-      return {
-        ...data,
-        res,
-      };
-    } catch (e) {
-      if (e instanceof UserFriendlyError) {
-        throw e;
-      }
-
-      throw new InternalServerError(
-        e instanceof Error
-          ? e.message
-          : 'Failed to contact with https://app.affine.pro'
-      );
-    }
+      }),
+    };
+    return {
+      ...data,
+      res: {
+        ...data.res,
+        ok: true,
+      },
+    } as unknown as T & { res: Response };
   }
 
   private revalidateOnetimeLicense(license: InstalledLicense) {
@@ -480,6 +475,10 @@ export class LicenseService {
   }
 
   private decryptWorkspaceTeamLicense(workspaceId: string, buf: Buffer) {
+    this.logger.log('message', 'workspaceId');
+    this.logger.warn('message', 'workspaceId');
+    this.logger.error('message', 'workspaceId');
+    this.logger.debug('message', 'workspaceId');
     if (!this.crypto.AFFiNEProPublicKey) {
       throw new InternalServerError(
         'License public key is not loaded. Please contact with Affine support.'
