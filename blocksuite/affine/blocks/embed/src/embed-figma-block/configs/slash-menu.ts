@@ -10,13 +10,13 @@ export const embedFigmaSlashMenuConfig: SlashMenuConfig = {
   items: [
     {
       name: 'Figma',
-      description: 'Embed a Figma document.',
+      description: '嵌入 Figma 文档。',
       icon: FigmaDuotoneIcon(),
       tooltip: {
         figure: FigmaTooltip,
         caption: 'Figma',
       },
-      group: '4_Content & Media@8',
+      group: '4_内容与媒体@8',
       when: ({ model }) =>
         model.store.schema.flavourSchemaMap.has('affine:embed-figma'),
       action: ({ std, model }) => {
@@ -30,7 +30,7 @@ export const embedFigmaSlashMenuConfig: SlashMenuConfig = {
           await toggleEmbedCardCreateModal(
             host,
             'Figma',
-            'The added Figma link will be displayed as an embed view.',
+            '添加的 Figma 链接将以嵌入视图显示。',
             { mode: 'page', parentModel, index },
             ({ mode }) => {
               if (mode === 'edgeless') {

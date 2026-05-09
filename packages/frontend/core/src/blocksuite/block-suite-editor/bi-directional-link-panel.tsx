@@ -435,7 +435,7 @@ export const BiDirectionalLinkPanel = () => {
       {!show && <Divider size="thinner" />}
 
       <div className={styles.titleLine}>
-        <div className={styles.title}>Bi-Directional Links</div>
+        <div className={styles.title}>双向链接</div>
         <Button className={styles.showButton} onClick={handleClickShow}>
           {show
             ? t['com.affine.editor.bi-directional-link-panel.hide']()

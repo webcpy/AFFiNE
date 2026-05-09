@@ -243,88 +243,88 @@ export const TodoTooltip = html`<svg width="170" height="68" viewBox="0 0 170 68
 `;
 
 export const tooltips: Record<string, SlashMenuTooltip> = {
-  Text: {
+  文本: {
     figure: TextTooltip,
-    caption: 'Text',
+    caption: '文本',
   },
 
-  'Heading 1': {
+  一级标题: {
     figure: Heading1Tooltip,
-    caption: 'Heading #1',
+    caption: '一级标题',
   },
 
-  'Heading 2': {
+  二级标题: {
     figure: Heading2Tooltip,
-    caption: 'Heading #2',
+    caption: '二级标题',
   },
 
-  'Heading 3': {
+  三级标题: {
     figure: Heading3Tooltip,
-    caption: 'Heading #3',
+    caption: '三级标题',
   },
 
-  'Heading 4': {
+  四级标题: {
     figure: Heading4Tooltip,
-    caption: 'Heading #4',
+    caption: '四级标题',
   },
 
-  'Heading 5': {
+  五级标题: {
     figure: Heading5Tooltip,
-    caption: 'Heading #5',
+    caption: '五级标题',
   },
 
-  'Heading 6': {
+  六级标题: {
     figure: Heading6Tooltip,
-    caption: 'Heading #6',
+    caption: '六级标题',
   },
 
-  'Code Block': {
+  代码块: {
     figure: CodeBlockTooltip,
-    caption: 'Code Block',
+    caption: '代码块',
   },
 
-  Quote: {
+  引用: {
     figure: QuoteTooltip,
-    caption: 'Quote',
+    caption: '引用',
   },
 
-  Divider: {
+  分割线: {
     figure: DividerTooltip,
-    caption: 'Divider',
+    caption: '分割线',
   },
 
-  'Bulleted List': {
+  无序列表: {
     figure: BulletedListTooltip,
-    caption: 'Bulleted List',
+    caption: '无序列表',
   },
 
-  'Numbered List': {
+  有序列表: {
     figure: NumberedListTooltip,
-    caption: 'Numbered List',
+    caption: '有序列表',
   },
 
-  Bold: {
+  加粗: {
     figure: BoldTextTooltip,
-    caption: 'Bold Text',
+    caption: '加粗文本',
   },
 
-  Italic: {
+  斜体: {
     figure: ItalicTooltip,
-    caption: 'Italic',
+    caption: '斜体',
   },
 
-  Underline: {
+  下划线: {
     figure: UnderlineTooltip,
-    caption: 'Underline',
+    caption: '下划线',
   },
 
-  Strikethrough: {
+  删除线: {
     figure: StrikethroughTooltip,
-    caption: 'Strikethrough',
+    caption: '删除线',
   },
 
-  'To-do List': {
+  待办列表: {
     figure: TodoTooltip,
-    caption: 'To-do List',
+    caption: '待办列表',
   },
 };

@@ -18,6 +18,24 @@ import {
   type AffineAIPanelWidget,
 } from '../widgets/ai-panel/ai-panel';
 
+const aiSlashMenuNameMap: Record<string, string> = {
+  'Ask AI': '询问 AI',
+  'Fix spelling': '修正拼写',
+  'Fix grammar': '修正语法',
+  Summarize: '总结',
+  'Continue writing': '继续写作',
+  'Action with above': '对上文执行操作',
+  'Translate to': '翻译为',
+  'Change tone to': '更改语气为',
+  'Improve writing': '改进写作',
+  'Make it longer': '扩写',
+  'Make it shorter': '缩写',
+  'Generate outline': '生成大纲',
+  'Find actions': '查找操作',
+};
+
+const getAIItemDisplayName = (name: string) => aiSlashMenuNameMap[name] ?? name;
+
 export function AiSlashMenuConfigExtension() {
   const AIItems = pageAIGroups.flatMap(group => group.items);
 
@@ -57,7 +75,7 @@ export function AiSlashMenuConfigExtension() {
       ...basicItemConfig(item),
       subMenu: (item.subItem ?? []).map<SlashMenuActionItem>(
         ({ type, handler }) => ({
-          name: type,
+          name: getAIItemDisplayName(type),
           action: ({ std }) => handler?.(std.host),
         })
       ),
@@ -66,7 +84,7 @@ export function AiSlashMenuConfigExtension() {
 
   const basicItemConfig = (item: AIItemConfig) => {
     return {
-      name: item.name,
+      name: getAIItemDisplayName(item.name),
       icon: iconWrapper(item.icon),
       searchAlias: ['ai'],
       when: showWhenWrapper(item),
@@ -76,7 +94,7 @@ export function AiSlashMenuConfigExtension() {
   let index = 0;
   const AIMenuItems: SlashMenuItem[] = [
     {
-      name: 'Ask AI',
+      name: '询问 AI',
       icon: AIStarIcon,
       when: showWhenWrapper(),
       action: ({ std }) => {
@@ -93,21 +111,21 @@ export function AiSlashMenuConfigExtension() {
       ['Fix spelling', 'Fix grammar'].includes(name)
     ).map<SlashMenuActionItem>(item => ({
       ...actionItemWrapper(item),
-      name: `${item.name} from above`,
-      group: `1_AFFiNE AI@${index++}`,
+      name: `对上文${getAIItemDisplayName(item.name)}`,
+      group: `1_AI 助手@${index++}`,
     })),
 
     ...AIItems.filter(({ name }) =>
       ['Summarize', 'Continue writing'].includes(name)
     ).map<SlashMenuActionItem>(item => ({
       ...actionItemWrapper(item),
-      group: `1_AFFiNE AI@${index++}`,
+      group: `1_AI 助手@${index++}`,
     })),
 
     {
-      name: 'Action with above',
+      name: '对上文执行操作',
       icon: iconWrapper(MoreHorizontalIcon({ width: '24px', height: '24px' })),
-      group: `1_AFFiNE AI@${index++}`,
+      group: `1_AI 助手@${index++}`,
       subMenu: [
         ...AIItems.filter(({ name }) =>
           ['Translate to', 'Change tone to'].includes(name)

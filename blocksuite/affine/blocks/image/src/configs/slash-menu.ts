@@ -8,14 +8,14 @@ import { PhotoTooltip } from './tooltips';
 export const imageSlashMenuConfig: SlashMenuConfig = {
   items: [
     {
-      name: 'Image',
-      description: 'Insert an image.',
+      name: '图片',
+      description: '插入图片。',
       icon: ImageIcon(),
       tooltip: {
         figure: PhotoTooltip,
-        caption: 'Photo',
+        caption: '图片',
       },
-      group: '4_Content & Media@1',
+      group: '4_内容与媒体@1',
       when: ({ model }) =>
         model.store.schema.flavourSchemaMap.has('affine:image'),
       action: ({ std }) => {

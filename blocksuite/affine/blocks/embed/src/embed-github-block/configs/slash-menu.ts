@@ -10,13 +10,13 @@ export const embedGithubSlashMenuConfig: SlashMenuConfig = {
   items: [
     {
       name: 'GitHub',
-      description: 'Link to a GitHub repository.',
+      description: '链接到 GitHub 仓库。',
       icon: GithubDuotoneIcon(),
       tooltip: {
         figure: GithubRepoTooltip,
-        caption: 'GitHub Repo',
+        caption: 'GitHub 仓库',
       },
-      group: '4_Content & Media@7',
+      group: '4_内容与媒体@7',
       when: ({ model }) =>
         model.store.schema.flavourSchemaMap.has('affine:embed-github'),
       action: ({ std, model }) => {

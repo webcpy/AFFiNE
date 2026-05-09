@@ -31,25 +31,25 @@ const noteSlashMenuConfig: SlashMenuConfig = {
   items: [
     ...textConversionConfigs
       .filter(i => i.type && ['h1', 'h2', 'h3', 'text'].includes(i.type))
-      .map(config => createConversionItem(config, `0_Basic@${basicIndex++}`)),
+      .map(config => createConversionItem(config, `0_基础@${basicIndex++}`)),
     {
       name: '其他标题',
       icon: HeadingsIcon(),
-      group: `0_Basic@${basicIndex++}`,
+      group: `0_基础@${basicIndex++}`,
       subMenu: textConversionConfigs
         .filter(i => i.type && ['h4', 'h5', 'h6'].includes(i.type))
         .map(config => createConversionItem(config)),
     },
     ...textConversionConfigs
       .filter(i => i.flavour === 'affine:code')
-      .map(config => createConversionItem(config, `0_Basic@${basicIndex++}`)),
+      .map(config => createConversionItem(config, `0_基础@${basicIndex++}`)),
 
     ...textConversionConfigs
       .filter(i => i.type && ['divider', 'quote'].includes(i.type))
       .map(
         config =>
           ({
-            ...createConversionItem(config, `0_Basic@${basicIndex++}`),
+            ...createConversionItem(config, `0_基础@${basicIndex++}`),
             when: ({ model }) =>
               model.store.schema.flavourSchemaMap.has(config.flavour) &&
               !isInsideBlockByFlavour(
@@ -63,17 +63,17 @@ const noteSlashMenuConfig: SlashMenuConfig = {
     ...textConversionConfigs
       .filter(i => i.flavour === 'affine:list')
       .map((config, index) =>
-        createConversionItem(config, `1_List@${index++}`)
+        createConversionItem(config, `1_列表@${index++}`)
       ),
 
     ...textAlignConfigs.map((config, index) =>
-      createAlignItem(config, `2_Align@${index++}`)
+      createAlignItem(config, `2_对齐@${index++}`)
     ),
 
     ...textFormatConfigs
-      .filter(i => !['Code', 'Link'].includes(i.name))
+      .filter(i => !['Code', 'Link', '代码', '链接'].includes(i.name))
       .map((config, index) =>
-        createTextFormatItem(config, `2_Style@${index++}`)
+        createTextFormatItem(config, `2_样式@${index++}`)
       ),
   ],
 };

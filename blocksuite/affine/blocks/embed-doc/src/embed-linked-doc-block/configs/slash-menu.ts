@@ -14,14 +14,14 @@ import { LinkDocTooltip, NewDocTooltip } from './tooltips';
 const linkedDocSlashMenuConfig: SlashMenuConfig = {
   items: [
     {
-      name: 'New Doc',
-      description: 'Start a new document.',
+      name: '新建文档',
+      description: '开始一个新文档。',
       icon: PlusIcon(),
       tooltip: {
         figure: NewDocTooltip,
-        caption: 'New Doc',
+        caption: '新建文档',
       },
-      group: '3_Page@0',
+      group: '3_页面@0',
       when: ({ model }) =>
         model.store.schema.flavourSchemaMap.has('affine:embed-linked-doc'),
       action: ({ std, model }) => {
@@ -35,15 +35,15 @@ const linkedDocSlashMenuConfig: SlashMenuConfig = {
       },
     },
     {
-      name: 'Linked Doc',
-      description: 'Link to another document.',
+      name: '链接文档',
+      description: '链接到其他文档。',
       icon: LinkedPageIcon(),
       tooltip: {
         figure: LinkDocTooltip,
-        caption: 'Link Doc',
+        caption: '链接文档',
       },
       searchAlias: ['dual link'],
-      group: '3_Page@1',
+      group: '3_页面@1',
       when: ({ std, model }) => {
         const root = model.store.root;
         if (!root) return false;

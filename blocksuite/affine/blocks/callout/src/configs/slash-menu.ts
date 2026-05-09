@@ -8,15 +8,15 @@ import { calloutTooltip } from './tooltips';
 export const calloutSlashMenuConfig: SlashMenuConfig = {
   items: [
     {
-      name: 'Callout',
-      description: 'Let your words stand out.',
+      name: '标注',
+      description: '让您的文字脱颖而出。',
       icon: FontIcon(),
       tooltip: {
         figure: calloutTooltip,
-        caption: 'Callout',
+        caption: '标注',
       },
       searchAlias: ['callout'],
-      group: '0_Basic@9',
+      group: '0_基础@9',
       when: ({ model }) => {
         return !isInsideBlockByFlavour(
           model.store,

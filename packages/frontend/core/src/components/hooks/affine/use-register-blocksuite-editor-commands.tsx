@@ -294,7 +294,7 @@ export function useRegisterBlocksuiteEditorCommands(
         preconditionStrategy,
         category: `editor:${mode}`,
         icon: mode === 'page' ? <PageIcon /> : <EdgelessIcon />,
-        label: t['Export to Snapshot'](),
+        label: t['导出为快照'](),
         async run() {
           track.$.cmdk.editor.export({
             type: 'snapshot',

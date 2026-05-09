@@ -223,7 +223,7 @@ export const dragTo = async (
 export const focusInlineEditor = async (page: Page) => {
   await page
     .locator(
-      `.affine-paragraph-rich-text-wrapper:has(.visible):has-text("Type '/' for commands")`
+      `.affine-paragraph-rich-text-wrapper:has(.visible):has-text("输入 '/' 使用命令")`
     )
     .locator('.inline-editor')
     .focus();

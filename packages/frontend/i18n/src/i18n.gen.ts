@@ -1635,6 +1635,10 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.cmdk.affine.navigation.goto-all-pages"](): string;
     /**
+      * `Go to Collection List`
+      */
+    ["com.affine.cmdk.affine.navigation.goto-collection-list"](): string;
+    /**
       * `Go to edgeless list`
       */
     ["com.affine.cmdk.affine.navigation.goto-edgeless-list"](): string;
@@ -1642,6 +1646,10 @@ export function useAFFiNEI18N(): {
       * `Go to page list`
       */
     ["com.affine.cmdk.affine.navigation.goto-page-list"](): string;
+    /**
+      * `Go to Tag List`
+      */
+    ["com.affine.cmdk.affine.navigation.goto-tag-list"](): string;
     /**
       * `Go to trash`
       */

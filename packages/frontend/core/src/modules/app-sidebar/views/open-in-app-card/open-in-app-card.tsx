@@ -41,7 +41,7 @@ export const OpenInAppCard = () => {
     <div
       data-testid="open-in-app-card"
       className={styles.root}
-      data-hidden={!show}
+      data-hidden={true}
     >
       <div className={styles.appIconCol}>
         <img src={appIcon} alt="app icon" width={48} height={48} />

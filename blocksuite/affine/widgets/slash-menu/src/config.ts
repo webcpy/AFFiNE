@@ -31,21 +31,21 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
 
     return [
       {
-        name: 'Today',
+        name: '今天',
         icon: TodayIcon(),
-        tooltip: slashMenuToolTips['Today'],
+        tooltip: slashMenuToolTips['今天'],
         description: formatDate(now),
-        group: '6_Date@0',
+        group: '6_日期@0',
         action: ({ std, model }) => {
           insertContent(std, model, formatDate(now));
         },
       },
       {
-        name: 'Tomorrow',
+        name: '明天',
         icon: TomorrowIcon(),
-        tooltip: slashMenuToolTips['Tomorrow'],
+        tooltip: slashMenuToolTips['明天'],
         description: formatDate(tomorrow),
-        group: '6_Date@1',
+        group: '6_日期@1',
         action: ({ std, model }) => {
           const tomorrow = new Date();
           tomorrow.setDate(tomorrow.getDate() + 1);
@@ -53,11 +53,11 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         },
       },
       {
-        name: 'Yesterday',
+        name: '昨天',
         icon: YesterdayIcon(),
-        tooltip: slashMenuToolTips['Yesterday'],
+        tooltip: slashMenuToolTips['昨天'],
         description: formatDate(yesterday),
-        group: '6_Date@2',
+        group: '6_日期@2',
         action: ({ std, model }) => {
           const yesterday = new Date();
           yesterday.setDate(yesterday.getDate() - 1);
@@ -65,21 +65,21 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         },
       },
       {
-        name: 'Now',
+        name: '现在',
         icon: NowIcon(),
-        tooltip: slashMenuToolTips['Now'],
+        tooltip: slashMenuToolTips['现在'],
         description: formatTime(now),
-        group: '6_Date@3',
+        group: '6_日期@3',
         action: ({ std, model }) => {
           insertContent(std, model, formatTime(now));
         },
       },
       {
-        name: 'Move Up',
-        description: 'Shift this line up.',
+        name: '上移',
+        description: '将这一行向上移动。',
         icon: ArrowUpBigIcon(),
-        tooltip: slashMenuToolTips['Move Up'],
-        group: '8_Actions@0',
+        tooltip: slashMenuToolTips['上移'],
+        group: '8_操作@0',
         action: ({ std, model }) => {
           const { host } = std;
           const previousSiblingModel = host.store.getPrev(model);
@@ -97,11 +97,11 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         },
       },
       {
-        name: 'Move Down',
-        description: 'Shift this line down.',
+        name: '下移',
+        description: '将这一行向下移动。',
         icon: ArrowDownBigIcon(),
-        tooltip: slashMenuToolTips['Move Down'],
-        group: '8_Actions@1',
+        tooltip: slashMenuToolTips['下移'],
+        group: '8_操作@1',
         action: ({ std, model }) => {
           const { host } = std;
           const nextSiblingModel = host.store.getNext(model);
@@ -114,18 +114,18 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         },
       },
       {
-        name: 'Copy',
-        description: 'Copy this line to clipboard.',
+        name: '复制',
+        description: '将这一行复制到剪贴板。',
         icon: CopyIcon(),
-        tooltip: slashMenuToolTips['Copy'],
-        group: '8_Actions@2',
+        tooltip: slashMenuToolTips['复制'],
+        group: '8_操作@2',
         action: ({ std, model }) => {
           const slice = Slice.fromModels(std.store, [model]);
 
           std.clipboard
             .copy(slice)
             .then(() => {
-              toast(std.host, 'Copied to clipboard');
+              toast(std.host, '已复制到剪贴板');
             })
             .catch(e => {
               console.error(e);
@@ -133,11 +133,11 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         },
       },
       {
-        name: 'Duplicate',
-        description: 'Create a duplicate of this line.',
+        name: '创建副本',
+        description: '创建这一行的副本。',
         icon: DualLinkIcon(),
-        tooltip: slashMenuToolTips['Copy'],
-        group: '8_Actions@3',
+        tooltip: slashMenuToolTips['复制'],
+        group: '8_操作@3',
         action: ({ std, model }) => {
           if (!model.text || !(model.text instanceof Text)) {
             console.error("Can't duplicate a block without text");
@@ -174,12 +174,12 @@ export const defaultSlashMenuConfig: SlashMenuConfig = {
         },
       },
       {
-        name: 'Delete',
-        description: 'Remove this line permanently.',
+        name: '删除',
+        description: '永久删除这一行。',
         searchAlias: ['remove'],
         icon: DeleteIcon(),
-        tooltip: slashMenuToolTips['Delete'],
-        group: '8_Actions@4',
+        tooltip: slashMenuToolTips['删除'],
+        group: '8_操作@4',
         action: ({ std, model }) => {
           std.host.store.deleteBlock(model);
         },

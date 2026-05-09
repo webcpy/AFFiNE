@@ -11,12 +11,12 @@ export const embedLoomSlashMenuConfig: SlashMenuConfig = {
     {
       name: 'Loom',
       icon: LoomLogoDuotoneIcon(),
-      description: 'Embed a Loom video.',
+      description: '嵌入 Loom 视频。',
       tooltip: {
         figure: LoomTooltip,
-        caption: 'loom',
+        caption: 'Loom',
       },
-      group: '4_Content & Media@9',
+      group: '4_内容与媒体@9',
       when: ({ model }) =>
         model.store.schema.flavourSchemaMap.has('affine:embed-loom'),
       action: ({ std, model }) => {
@@ -30,7 +30,7 @@ export const embedLoomSlashMenuConfig: SlashMenuConfig = {
           await toggleEmbedCardCreateModal(
             host,
             'Loom',
-            'The added Loom video link will be displayed as an embed view.',
+            '添加的 Loom 视频链接将以嵌入视图显示。',
             { mode: 'page', parentModel, index },
             ({ mode }) => {
               if (mode === 'edgeless') {

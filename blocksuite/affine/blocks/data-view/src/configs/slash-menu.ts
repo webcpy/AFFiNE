@@ -12,14 +12,14 @@ export const dataViewSlashMenuConfig: SlashMenuConfig = {
   },
   items: [
     {
-      name: 'Todo',
+      name: '待办',
       searchAlias: ['todo view'],
       icon: DatabaseTableViewIcon(),
       tooltip: {
         figure: ToDoListTooltip,
-        caption: 'To-do List',
+        caption: '待办列表',
       },
-      group: '7_Database@1',
+      group: '7_数据库@1',
       when: ({ model, std }) =>
         !isInsideBlockByFlavour(model.store, model, 'affine:edgeless-text') &&
         !!std.get(FeatureFlagService).getFlag('enable_block_query'),

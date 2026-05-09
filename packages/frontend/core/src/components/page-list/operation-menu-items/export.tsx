@@ -132,7 +132,7 @@ export const ExportMenuItems = ({
         className={className}
         type="snapshot"
         icon={<PageIcon />}
-        label={t['Export to Snapshot']()}
+        label={t['导出为快照']()}
       />
     </>
   );

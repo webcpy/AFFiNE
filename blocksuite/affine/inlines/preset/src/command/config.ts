@@ -32,7 +32,7 @@ export interface TextFormatConfig {
 export const textFormatConfigs: TextFormatConfig[] = [
   {
     id: 'bold',
-    name: 'Bold',
+    name: '加粗',
     icon: BoldIcon,
     hotkey: 'Mod-b',
     activeWhen: host => {
@@ -48,7 +48,7 @@ export const textFormatConfigs: TextFormatConfig[] = [
   },
   {
     id: 'italic',
-    name: 'Italic',
+    name: '斜体',
     icon: ItalicIcon,
     hotkey: 'Mod-i',
     activeWhen: host => {
@@ -64,7 +64,7 @@ export const textFormatConfigs: TextFormatConfig[] = [
   },
   {
     id: 'underline',
-    name: 'Underline',
+    name: '下划线',
     icon: UnderlineIcon,
     hotkey: 'Mod-u',
     activeWhen: host => {
@@ -80,7 +80,7 @@ export const textFormatConfigs: TextFormatConfig[] = [
   },
   {
     id: 'strike',
-    name: 'Strikethrough',
+    name: '删除线',
     icon: StrikethroughIcon,
     hotkey: 'Mod-shift-s',
     activeWhen: host => {
@@ -96,7 +96,7 @@ export const textFormatConfigs: TextFormatConfig[] = [
   },
   {
     id: 'code',
-    name: 'Code',
+    name: '代码',
     icon: CodeIcon,
     hotkey: 'Mod-e',
     activeWhen: host => {
@@ -112,7 +112,7 @@ export const textFormatConfigs: TextFormatConfig[] = [
   },
   {
     id: 'link',
-    name: 'Link',
+    name: '链接',
     icon: LinkIcon,
     hotkey: 'Mod-k',
     activeWhen: host => {

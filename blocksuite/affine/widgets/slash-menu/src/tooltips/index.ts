@@ -9,43 +9,43 @@ import { TomorrowTooltip } from './tomorrow';
 import { YesterdayTooltip } from './yesterday';
 
 export const slashMenuToolTips: Record<string, SlashMenuTooltip> = {
-  Today: {
+  今天: {
     figure: TodayTooltip,
-    caption: 'Today',
+    caption: '今天',
   },
 
-  Tomorrow: {
+  明天: {
     figure: TomorrowTooltip,
-    caption: 'Tomorrow',
+    caption: '明天',
   },
 
-  Yesterday: {
+  昨天: {
     figure: YesterdayTooltip,
-    caption: 'Yesterday',
+    caption: '昨天',
   },
 
-  Now: {
+  现在: {
     figure: NowTooltip,
-    caption: 'Now',
+    caption: '现在',
   },
 
-  'Move Up': {
+  上移: {
     figure: MoveUpTooltip,
-    caption: 'Move Up',
+    caption: '上移',
   },
 
-  'Move Down': {
+  下移: {
     figure: MoveDownTooltip,
-    caption: 'Move Down',
+    caption: '下移',
   },
 
-  Copy: {
+  复制: {
     figure: CopyTooltip,
-    caption: 'Copy / Duplicate',
+    caption: '复制 / 创建副本',
   },
 
-  Delete: {
+  删除: {
     figure: DeleteTooltip,
-    caption: 'Delete',
+    caption: '删除',
   },
 };

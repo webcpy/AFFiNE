@@ -52,14 +52,14 @@ const surfaceRefSlashMenuConfig: SlashMenuConfig = {
     let index = 0;
 
     const insertBlankFrameItem: SlashMenuItem = {
-      name: 'Frame',
-      description: 'Insert a blank frame',
+      name: '画框',
+      description: '插入空白画框',
       icon: FrameIcon(),
       tooltip: {
         figure: FrameTooltip,
-        caption: 'Frame',
+        caption: '画框',
       },
-      group: `5_Edgeless Element@${index++}`,
+      group: `5_白板元素@${index++}`,
       action: () => {
         const frameBound = findSpace(Bound.fromXYWH([0, 0, 1600, 900]));
         const frame = frameMgr.createFrameOnBound(frameBound);
@@ -68,14 +68,14 @@ const surfaceRefSlashMenuConfig: SlashMenuConfig = {
     };
 
     const insertMindMapItem: SlashMenuItem = {
-      name: 'Mind Map',
-      description: 'Insert a mind map',
+      name: '思维导图',
+      description: '插入思维导图',
       icon: MindmapIcon(),
       tooltip: {
         figure: MindMapTooltip,
-        caption: 'Edgeless',
+        caption: '无界',
       },
-      group: `5_Edgeless Element@${index++}`,
+      group: `5_白板元素@${index++}`,
       action: () => {
         const bound = findSpace(Bound.fromXYWH([0, 0, 200, 200]), 150);
         const { x, y, h } = bound;
@@ -98,7 +98,7 @@ const surfaceRefSlashMenuConfig: SlashMenuConfig = {
 
         const root: MindMapNode = {
           children: [],
-          text: 'Mind Map',
+          text: '思维导图',
           xywh: `[${rootX},${rootY},${rootW},${rootH}]`,
         };
 
@@ -107,7 +107,7 @@ const surfaceRefSlashMenuConfig: SlashMenuConfig = {
           const nodeY = centerVertical - nodeH / 2 + (i - 1) * 50;
           root.children.push({
             children: [],
-            text: 'Text',
+            text: '文本',
             xywh: `[${nodeX},${nodeY},${nodeW},${nodeH}]`,
           });
         }
@@ -123,12 +123,12 @@ const surfaceRefSlashMenuConfig: SlashMenuConfig = {
     };
 
     const frameItems = frameMgr.frames.map<SlashMenuActionItem>(frameModel => ({
-      name: 'Frame: ' + frameModel.props.title,
+      name: '画框：' + frameModel.props.title,
       icon: FrameIcon(),
-      group: `5_Edgeless Element@${index++}`,
+      group: `5_白板元素@${index++}`,
       tooltip: {
         figure: EdgelessTooltip,
-        caption: 'Edgeless',
+        caption: '无界',
       },
       action: () => {
         insertSurfaceRefAndSelect(frameModel.id);
@@ -137,12 +137,12 @@ const surfaceRefSlashMenuConfig: SlashMenuConfig = {
 
     const groupElements = crud.getElementsByType('group');
     const groupItems = groupElements.map<SlashMenuActionItem>(group => ({
-      name: 'Group: ' + group.title.toString(),
+      name: '分组：' + group.title.toString(),
       icon: GroupingIcon(),
-      group: `5_Edgeless Element@${index++}`,
+      group: `5_白板元素@${index++}`,
       tooltip: {
         figure: EdgelessTooltip,
-        caption: 'Edgeless',
+        caption: '无界',
       },
       action: () => {
         insertSurfaceRefAndSelect(group.id);

@@ -8,15 +8,15 @@ import { AttachmentTooltip, PDFTooltip } from './tooltips';
 export const attachmentSlashMenuConfig: SlashMenuConfig = {
   items: [
     {
-      name: 'Attachment',
-      description: 'Attach a file to document.',
+      name: '附件',
+      description: '向文档添加文件。',
       icon: FileIcon(),
       tooltip: {
         figure: AttachmentTooltip,
-        caption: 'Attachment',
+        caption: '附件',
       },
       searchAlias: ['file'],
-      group: '4_Content & Media@3',
+      group: '4_内容与媒体@3',
       when: ({ model }) =>
         model.store.schema.flavourSchemaMap.has('affine:attachment'),
       action: ({ std, model }) => {
@@ -33,13 +33,13 @@ export const attachmentSlashMenuConfig: SlashMenuConfig = {
     },
     {
       name: 'PDF',
-      description: 'Upload a PDF to document.',
+      description: '向文档上传 PDF。',
       icon: ExportToPdfIcon(),
       tooltip: {
         figure: PDFTooltip,
         caption: 'PDF',
       },
-      group: '4_Content & Media@4',
+      group: '4_内容与媒体@4',
       when: ({ model }) =>
         model.store.schema.flavourSchemaMap.has('affine:attachment'),
       action: ({ std, model }) => {

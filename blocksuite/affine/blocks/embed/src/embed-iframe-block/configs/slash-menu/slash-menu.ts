@@ -8,14 +8,14 @@ import { EmbedIframeTooltip } from './tooltip';
 export const embedIframeSlashMenuConfig: SlashMenuConfig = {
   items: [
     {
-      name: 'Embed',
-      description: 'For Google Drive, and more.',
+      name: '嵌入',
+      description: '适用于 Google Drive 等服务。',
       icon: EmbedIcon(),
       tooltip: {
         figure: EmbedIframeTooltip,
-        caption: 'Embed',
+        caption: '嵌入',
       },
-      group: '4_Content & Media@5',
+      group: '4_内容与媒体@5',
       when: ({ model }) => {
         return model.store.schema.flavourSchemaMap.has('affine:embed-iframe');
       },
