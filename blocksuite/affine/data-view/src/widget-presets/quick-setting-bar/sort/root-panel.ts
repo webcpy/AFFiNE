@@ -100,11 +100,11 @@ export class SortRootView extends SignalWatcher(
               <data-view-component-button
                 style="color: var(--affine-error-color);border-color: color: var(--affine-error-color)"
                 @click="${deleteRule}"
-                .text="${html`This rule is invalid, click to delete`}"
+                .text="${html`此规则无效，点击删除`}"
               ></data-view-component-button>
             `;
           } else {
-            const descName = sort.desc ? 'Descending' : 'Ascending';
+            const descName = sort.desc ? '降序' : '升序';
             const clickField = (event: MouseEvent) => {
               popMenu(
                 popupTargetFromElement(event.currentTarget as HTMLElement),
@@ -134,7 +134,7 @@ export class SortRootView extends SignalWatcher(
                   options: {
                     items: [false, true].map(desc => {
                       return menu.action({
-                        name: desc ? 'Descending' : 'Ascending',
+                        name: desc ? '降序' : '升序',
                         isSelected: desc === sort.desc,
                         select: () => {
                           changeRule({ ...sort, desc });
@@ -221,7 +221,7 @@ export const popSortRoot = (
           ></sort-root-view>`;
         },
         menu.action({
-          name: 'Add sort',
+          name: '添加排序',
           prefix: PlusIcon(),
           select: ele => {
             popCreateSort(popupTargetFromElement(ele), {
@@ -231,7 +231,7 @@ export const popSortRoot = (
           },
         }),
         menu.action({
-          name: 'Delete',
+          name: '删除',
           class: { 'delete-item': true },
           prefix: DeleteIcon(),
           select: () => {

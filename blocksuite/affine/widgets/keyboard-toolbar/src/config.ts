@@ -806,7 +806,7 @@ const databaseToolGroup: KeyboardToolPanelGroup = {
   name: 'Database',
   items: [
     {
-      name: 'Table view',
+      name: '表格视图',
       icon: DatabaseTableViewIcon(),
       showWhen: ({ std }) =>
         std.store.schema.flavourSchemaMap.has('affine:database'),
@@ -823,7 +823,7 @@ const databaseToolGroup: KeyboardToolPanelGroup = {
       },
     },
     {
-      name: 'Kanban view',
+      name: '看板视图',
       icon: DatabaseKanbanViewIcon(),
       showWhen: ({ std }) =>
         std.store.schema.flavourSchemaMap.has('affine:database'),

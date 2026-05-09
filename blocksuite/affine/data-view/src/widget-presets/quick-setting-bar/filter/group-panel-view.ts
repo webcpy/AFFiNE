@@ -36,7 +36,7 @@ export const popAddNewFilter = (
 ) => {
   popFilterableSimpleMenu(target, [
     menu.action({
-      name: 'Add filter',
+      name: '添加筛选',
       select: () => {
         props.onChange({
           ...props.value,
@@ -45,7 +45,7 @@ export const popAddNewFilter = (
       },
     }),
     menu.action({
-      name: 'Add filter group',
+      name: '添加筛选组',
       select: () => {
         props.onChange({
           ...props.value,
@@ -208,7 +208,7 @@ export class FilterGroupView extends SignalWatcher(ShadowlessElement) {
       popupTargetFromElement(event.currentTarget as HTMLElement),
       [
         menu.action({
-          name: 'And',
+          name: '且',
           select: () => {
             this.onChange({
               ...this.filterGroup.value,
@@ -217,7 +217,7 @@ export class FilterGroupView extends SignalWatcher(ShadowlessElement) {
           },
         }),
         menu.action({
-          name: 'Or',
+          name: '或',
           select: () => {
             this.onChange({
               ...this.filterGroup.value,
@@ -239,8 +239,8 @@ export class FilterGroupView extends SignalWatcher(ShadowlessElement) {
   };
 
   private readonly opMap = {
-    and: 'And',
-    or: 'Or',
+    and: '且',
+    or: '或',
   };
 
   @property({ attribute: false })
@@ -271,7 +271,7 @@ export class FilterGroupView extends SignalWatcher(ShadowlessElement) {
         items: [
           menu.action({
             name:
-              filter.type === 'filter' ? 'Turn into group' : 'Wrap in group',
+              filter.type === 'filter' ? '转换为组' : '包装为组',
             prefix: ConvertIcon(),
             onHover: hover => {
               this.containerClass = hover
@@ -288,7 +288,7 @@ export class FilterGroupView extends SignalWatcher(ShadowlessElement) {
             },
           }),
           menu.action({
-            name: 'Duplicate',
+            name: '复制',
             prefix: DuplicateIcon(),
             onHover: hover => {
               this.containerClass = hover
@@ -348,7 +348,7 @@ export class FilterGroupView extends SignalWatcher(ShadowlessElement) {
           };
           let op: TemplateResult;
           if (i === 0) {
-            op = html` <div class="filter-group-op">Where</div>`;
+            op = html` <div class="filter-group-op">当</div>`;
           } else {
             op = html`
               <div
@@ -401,7 +401,7 @@ export class FilterGroupView extends SignalWatcher(ShadowlessElement) {
         })}
       </div>
       <div class="filter-group-button" @click="${this._addNew}">
-        ${PlusIcon()} Add ${this.isMaxDepth ? nothing : ArrowDownSmallIcon()}
+        ${PlusIcon()} 添加 ${this.isMaxDepth ? nothing : ArrowDownSmallIcon()}
       </div>
     `;
   }
@@ -447,7 +447,7 @@ export const popFilterGroup = (
   popMenu(target, {
     options: {
       title: {
-        text: 'Filter group',
+        text: '筛选组',
         onBack: props.onBack,
       },
       items: [
@@ -465,7 +465,7 @@ export const popFilterGroup = (
         menu.group({
           items: [
             menu.action({
-              name: 'Delete',
+              name: '删除',
               class: { 'delete-item': true },
               prefix: DeleteIcon(),
               select: () => {

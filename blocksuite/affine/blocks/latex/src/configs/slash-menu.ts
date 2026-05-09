@@ -13,7 +13,7 @@ export const latexSlashMenuConfig: SlashMenuConfig = {
   items: [
     {
       name: '行内公式',
-      group: '0_Basic@8',
+      group: '0_基础@8',
       description: '创建行内公式。',
       icon: TeXIcon(),
       tooltip: {
@@ -46,7 +46,7 @@ export const latexSlashMenuConfig: SlashMenuConfig = {
         caption: '公式',
       },
       searchAlias: ['mathBlock, equationBlock', 'latexBlock'],
-      group: '4_Content & Media@10',
+      group: '4_内容与媒体@10',
       action: ({ std }) => {
         std.command
           .chain()

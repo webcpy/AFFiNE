@@ -32,7 +32,7 @@ export const popCardMenu = (
     menu.group({
       items: [
         menu.action({
-          name: 'Expand Card',
+          name: '展开卡片',
           prefix: ExpandFullIcon(),
           select: () => {
             kanbanViewLogic.root.openDetailPanel({
@@ -46,7 +46,7 @@ export const popCardMenu = (
     menu.group({
       items: [
         menu.subMenu({
-          name: 'Move To',
+          name: '移动到',
           prefix: ArrowRightBigIcon(),
           options: {
             items:
@@ -54,7 +54,7 @@ export const popCardMenu = (
                 .filter(v => v.key !== groupKey)
                 .map(group =>
                   menu.action({
-                    name: group.value != null ? group.name$.value : 'Ungroup',
+                    name: group.value != null ? group.name$.value : '未分组',
                     select: () => {
                       groupTrait.moveCardTo(
                         cardId,
@@ -73,7 +73,7 @@ export const popCardMenu = (
       name: '',
       items: [
         menu.action({
-          name: 'Insert Before',
+          name: '在前面插入',
           prefix: html` <div
             style="transform: rotate(90deg);display:flex;align-items:center;"
           >
@@ -88,7 +88,7 @@ export const popCardMenu = (
           },
         }),
         menu.action({
-          name: 'Insert After',
+          name: '在后面插入',
           prefix: html` <div
             style="transform: rotate(90deg);display:flex;align-items:center;"
           >
@@ -107,7 +107,7 @@ export const popCardMenu = (
     menu.group({
       items: [
         menu.action({
-          name: 'Delete Card',
+          name: '删除卡片',
           class: {
             'delete-item': true,
           },

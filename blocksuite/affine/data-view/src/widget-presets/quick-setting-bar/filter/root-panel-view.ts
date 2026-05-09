@@ -214,7 +214,7 @@ export class FilterRootView extends SignalWatcher(ShadowlessElement) {
         items: [
           menu.action({
             name:
-              filter.type === 'filter' ? 'Turn into group' : 'Wrap in group',
+              filter.type === 'filter' ? '转换为组' : '包装为组',
             prefix: ConvertIcon(),
             hide: () => getDepth(filter) > 3,
             select: () => {
@@ -226,7 +226,7 @@ export class FilterRootView extends SignalWatcher(ShadowlessElement) {
             },
           }),
           menu.action({
-            name: 'Duplicate',
+            name: '复制',
             prefix: DuplicateIcon(),
             select: () => {
               const conditions = [...this.filterGroup.value.conditions];
@@ -245,7 +245,7 @@ export class FilterRootView extends SignalWatcher(ShadowlessElement) {
             name: '',
             items: [
               menu.action({
-                name: 'Delete',
+                name: '删除',
                 prefix: DeleteIcon(),
                 class: { 'delete-item': true },
                 select: () => {
@@ -337,7 +337,7 @@ export class FilterRootView extends SignalWatcher(ShadowlessElement) {
       );
     };
     const length = condition.conditions.length;
-    const text = length > 1 ? `${length} rules` : `${length} rule`;
+    const text = `${length} 条规则`;
     return html` <data-view-component-button
       hoverType="border"
       .icon="${FilterIcon()}"
@@ -386,7 +386,7 @@ export const popFilterRoot = (
     middleware,
     options: {
       title: {
-        text: 'Filters',
+        text: '筛选',
         onBack: props.onBack,
         onClose: props.onClose,
       },
@@ -406,7 +406,7 @@ export const popFilterRoot = (
         menu.group({
           items: [
             menu.action({
-              name: 'Add',
+              name: '添加',
               prefix: PlusIcon(),
               select: ele => {
                 const value = filterTrait.filter$.value;

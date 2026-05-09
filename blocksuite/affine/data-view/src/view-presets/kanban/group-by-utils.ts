@@ -8,7 +8,7 @@ import { getGroupByService } from '../../core/group-by/matcher.js';
 
 type KanbanGroupCapability = 'mutable' | 'immutable' | 'none';
 
-const KANBAN_DEFAULT_STATUS_OPTIONS = ['Todo', 'In Progress', 'Done'];
+const KANBAN_DEFAULT_STATUS_OPTIONS = ['待办', '进行中', '已完成'];
 const SHOW_EMPTY_GROUPS_BY_DEFAULT = new Set(['select', 'multi-select']);
 
 export const getKanbanDefaultHideEmpty = (groupName?: string): boolean => {

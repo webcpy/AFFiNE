@@ -42,6 +42,12 @@ import { WidgetBase } from '../../../../core/widget/widget-base.js';
 import { popFilterRoot } from '../../../quick-setting-bar/filter/root-panel-view.js';
 import { popSortRoot } from '../../../quick-setting-bar/sort/root-panel.js';
 
+const translateDefaultViewName = (name: string) => {
+  if (name === 'Table View') return '表格视图';
+  if (name === 'Kanban View') return '看板视图';
+  return name;
+};
+
 const styles = css`
   .affine-database-toolbar-item.more-action {
     padding: 2px;
@@ -105,11 +111,11 @@ const createSettingMenus = (
   const settingItems: MenuConfig[] = [];
   settingItems.push(
     menu.action({
-      name: 'Properties',
+      name: '属性',
       prefix: InfoIcon(),
       closeOnSelect: false,
       postfix: html` <div style="font-size: 14px;">
-          ${view.properties$.value.length} shown
+          已显示 ${view.properties$.value.length} 项
         </div>
         ${ArrowRightSmallIcon()}`,
       select: () => {
@@ -134,15 +140,15 @@ const createSettingMenus = (
     const filterCount = filterTrait.filter$.value.conditions.length;
     settingItems.push(
       menu.action({
-        name: 'Filter',
+        name: '筛选',
         prefix: FilterIcon(),
         closeOnSelect: false,
         postfix: html` <div style="font-size: 14px;">
             ${filterCount === 0
               ? ''
               : filterCount === 1
-                ? '1 filter'
-                : `${filterCount} filters`}
+                ? '1 个筛选'
+                : `${filterCount} 个筛选`}
           </div>
           ${ArrowRightSmallIcon()}`,
         select: () => {
@@ -217,15 +223,15 @@ const createSettingMenus = (
     const sortCount = sortTrait.sortList$.value.length;
     settingItems.push(
       menu.action({
-        name: 'Sort',
+        name: '排序',
         prefix: SortIcon(),
         closeOnSelect: false,
         postfix: html` <div style="font-size: 14px;">
             ${sortCount === 0
               ? ''
               : sortCount === 1
-                ? '1 sort'
-                : `${sortCount} sorts`}
+                ? '1 个排序'
+                : `${sortCount} 个排序`}
           </div>
           ${ArrowRightSmallIcon()}`,
         select: () => {
@@ -258,7 +264,7 @@ const createSettingMenus = (
               {
                 sortUtils: sortUtils,
                 title: {
-                  text: 'Sort',
+                  text: '排序',
                   onBack: reopen,
                   onClose: closeMenu,
                 },
@@ -280,7 +286,7 @@ const createSettingMenus = (
   if (groupTrait) {
     settingItems.push(
       menu.action({
-        name: 'Group',
+        name: '分组',
         prefix: GroupingIcon(),
         closeOnSelect: false,
         postfix: html` <div style="font-size: 14px;">
@@ -341,8 +347,8 @@ export const popViewOptions = (
   const items: MenuConfig[] = [];
   items.push(
     menu.input({
-      initialValue: view.name$.value,
-      placeholder: 'View name',
+      initialValue: translateDefaultViewName(view.name$.value),
+      placeholder: '视图名称',
       onChange: text => {
         view.nameSet(text);
       },
@@ -418,7 +424,7 @@ export const popViewOptions = (
               <div
                 style="font-size:14px;line-height:22px;color:var(--affine-text-secondary-color);"
               >
-                Layout
+                布局
               </div>
             </div>
             <div style="display:flex;gap:8px;margin-top:8px;">
@@ -441,7 +447,7 @@ export const popViewOptions = (
     menu.group({
       items: [
         menu.action({
-          name: 'Duplicate',
+          name: '复制',
           prefix: DuplicateIcon(),
           closeOnSelect: false,
           select: () => {
@@ -449,7 +455,7 @@ export const popViewOptions = (
           },
         }),
         menu.action({
-          name: 'Delete',
+          name: '删除',
           prefix: DeleteIcon(),
           closeOnSelect: false,
           select: () => {
@@ -463,7 +469,7 @@ export const popViewOptions = (
   handler = popMenu(target, {
     options: {
       title: {
-        text: 'View settings',
+        text: '视图设置',
         onClose: () => handler.close(),
       },
       items,

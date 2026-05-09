@@ -20,6 +20,12 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { WidgetBase } from '../../core/widget/widget-base.js';
 
+const translateDefaultViewName = (name: string) => {
+  if (name === 'Table View') return '表格视图';
+  if (name === 'Kanban View') return '看板视图';
+  return name;
+};
+
 export class DataViewHeaderViews extends WidgetBase {
   static override styles = css`
     data-view-header-views {
@@ -138,7 +144,7 @@ export class DataViewHeaderViews extends WidgetBase {
         menu.group({
           items: this.dataSource.viewMetas.map(v => {
             return menu.action({
-              name: `Create ${v.model.defaultName}`,
+              name: `创建${v.model.defaultName}`,
               hide: () => this.readonly,
               prefix: PlusIcon(),
               select: () => {
@@ -169,8 +175,8 @@ export class DataViewHeaderViews extends WidgetBase {
       options: {
         items: [
           menu.input({
-            initialValue: view.name$.value,
-            placeholder: 'View name',
+            initialValue: translateDefaultViewName(view.name$.value),
+            placeholder: '视图名称',
             onChange: text => {
               view.nameSet(text);
             },
@@ -178,7 +184,7 @@ export class DataViewHeaderViews extends WidgetBase {
           menu.group({
             items: [
               menu.action({
-                name: 'Edit View',
+                name: '编辑视图',
                 prefix: InfoIcon(),
                 select: () => {
                   this.closest('affine-data-view-renderer')
@@ -187,7 +193,7 @@ export class DataViewHeaderViews extends WidgetBase {
                 },
               }),
               menu.action({
-                name: 'Move Left',
+                name: '向左移动',
                 hide: () => index === 0,
                 prefix: MoveLeftIcon(),
                 select: () => {
@@ -199,7 +205,7 @@ export class DataViewHeaderViews extends WidgetBase {
                 },
               }),
               menu.action({
-                name: 'Move Right',
+                name: '向右移动',
                 prefix: MoveRightIcon(),
                 hide: () => index === views.length - 1,
                 select: () => {
@@ -215,14 +221,14 @@ export class DataViewHeaderViews extends WidgetBase {
           menu.group({
             items: [
               menu.action({
-                name: 'Duplicate',
+                name: '复制',
                 prefix: DuplicateIcon(),
                 select: () => {
                   this.viewManager.viewDuplicate(id);
                 },
               }),
               menu.action({
-                name: 'Delete',
+                name: '删除',
                 prefix: DeleteIcon(),
                 select: () => {
                   view.delete();
@@ -252,7 +258,7 @@ export class DataViewHeaderViews extends WidgetBase {
     }
     return html`
       <div class="database-view-button dv-hover" @click="${this._showMore}">
-        ${views.length - count} More
+        还有 ${views.length - count} 个
       </div>
     `;
   };
@@ -273,7 +279,9 @@ export class DataViewHeaderViews extends WidgetBase {
           @click="${(event: MouseEvent) => this.clickView(event, id)}"
         >
           <uni-lit class="icon" .uni="${this.getRenderer(id)?.icon}"></uni-lit>
-          <div class="name">${view?.name}</div>
+          <div class="name">
+            ${view ? translateDefaultViewName(view.name) : ''}
+          </div>
         </div>
       `;
     });

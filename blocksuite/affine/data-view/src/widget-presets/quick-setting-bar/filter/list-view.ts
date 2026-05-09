@@ -140,7 +140,7 @@ export class FilterBar extends SignalWatcher(ShadowlessElement) {
       class="filter-bar-add-filter dv-icon-16 dv-round-4 dv-hover"
       @click="${this.addFilter}"
     >
-      ${PlusIcon()} Add filter
+      ${PlusIcon()} 添加筛选
     </div>`;
   };
 

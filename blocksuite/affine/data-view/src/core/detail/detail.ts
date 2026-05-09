@@ -113,7 +113,7 @@ export class RecordDetail extends SignalWatcher(
     popMenu(popupTargetFromElement(this.addPropertyButton), {
       options: {
         title: {
-          text: 'Add property',
+          text: '添加属性',
         },
         items: [
           menu.group({
