@@ -70,27 +70,27 @@ export class AIFinishTip extends WithDisposable(LitElement) {
   override render() {
     return html`<div class="finish-tip">
       ${WarningIcon}
-      <div class="text">AI outputs can be misleading or wrong</div>
+      <div class="text">AI 有可能犯错，请注意辨别</div>
       ${this.copy?.allowed
         ? html`<div class="right">
             ${this.copied
-              ? html`<div class="copied" data-testid="answer-copied">
+            ? html`<div class="copied" data-testid="answer-copied">
                   ${AIDoneIcon}
                 </div>`
-              : html`<div
+            : html`<div
                   class="copy"
                   data-testid="answer-copy-button"
                   @click=${async () => {
-                    this.copied = !!(await this.copy?.onCopy());
-                    if (this.copied) {
-                      this.host.std
-                        .getOptional(NotificationProvider)
-                        ?.toast('Copied to clipboard');
-                    }
-                  }}
+                this.copied = !!(await this.copy?.onCopy());
+                if (this.copied) {
+                  this.host.std
+                    .getOptional(NotificationProvider)
+                    ?.toast('复制成功');
+                }
+              }}
                 >
                   ${CopyIcon}
-                  <affine-tooltip>Copy</affine-tooltip>
+                  <affine-tooltip>复制</affine-tooltip>
                 </div>`}
           </div>`
         : nothing}

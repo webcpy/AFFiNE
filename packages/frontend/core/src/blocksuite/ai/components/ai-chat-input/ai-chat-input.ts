@@ -562,8 +562,8 @@ export class AIChatInput extends SignalWatcher(
       data-if-focused=${this.focused}
       data-drag-over=${this.isDragOver}
       style=${styleMap({
-        maxHeight: `${maxHeight}px !important`,
-      })}
+      maxHeight: `${maxHeight}px !important`,
+    })}
       @pointerdown=${this._handlePointerDown}
       @dragenter=${this._handleDragEnter}
       @dragover=${this._handleDragOver}
@@ -587,15 +587,15 @@ export class AIChatInput extends SignalWatcher(
             data-testid="chat-selection-quote"
           >
             ${repeat(
-              getFirstTwoLines(this.chatContextValue.quote),
-              line => line,
-              line => html`<div>${line}</div>`
-            )}
+          getFirstTwoLines(this.chatContextValue.quote),
+          line => line,
+          line => html`<div>${line}</div>`
+        )}
             <div
               class="chat-quote-close"
               @click=${() => {
-                this.updateContext({ quote: '', markdown: '' });
-              }}
+            this.updateContext({ quote: '', markdown: '' });
+          }}
             >
               ${CloseIcon()}
             </div>
@@ -603,15 +603,15 @@ export class AIChatInput extends SignalWatcher(
         : nothing}
       <textarea
         rows="1"
-        placeholder="What are your thoughts?"
+        placeholder="你有什么想法？"
         @input=${this._handleInput}
         @keydown=${this._handleKeyDown}
         @focus=${() => {
-          this.focused = true;
-        }}
+        this.focused = true;
+      }}
         @blur=${() => {
-          this.focused = false;
-        }}
+        this.focused = false;
+      }}
         @paste=${this._handlePaste}
         data-testid="chat-panel-input"
       ></textarea>
@@ -640,14 +640,14 @@ export class AIChatInput extends SignalWatcher(
           .onAISubscribe=${this.onAISubscribe}
         ></chat-input-preference>
         ${status === 'transmitting' || status === 'loading'
-          ? html`<button
+        ? html`<button
               class="chat-panel-stop"
               @click=${this._handleAbort}
               data-testid="chat-panel-stop"
             >
               ${ChatAbortIcon}
             </button>`
-          : html`<button
+        : html`<button
               @click="${this._onTextareaSend}"
               class="chat-panel-send"
               aria-disabled=${this.isSendDisabled}
@@ -988,8 +988,8 @@ export class AIChatInput extends SignalWatcher(
       const docTitle = this.docDisplayConfig.getTitle(doc.docId);
       const tags = docMeta?.tags
         ? docMeta.tags
-            .map(tagId => this.docDisplayConfig.getTagTitle(tagId))
-            .join(',')
+          .map(tagId => this.docDisplayConfig.getTagTitle(tagId))
+          .join(',')
         : '';
       return {
         docId: doc.docId,

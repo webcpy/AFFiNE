@@ -7,7 +7,7 @@ import { css, html, type PropertyValues } from 'lit';
 import { property } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
 
-const DEFAULT_TAB_TITLE = 'New chat';
+const DEFAULT_TAB_TITLE = '新聊天';
 const TITLE_MAX_LENGTH = 28;
 
 function truncate(text: string): string {
@@ -134,10 +134,10 @@ export class AIChatTabs extends WithDisposable(ShadowlessElement) {
       <div class="ai-chat-tabs" data-testid="ai-chat-tabs">
         <div class="tabs-scroll" @wheel=${this._handleWheel}>
           ${repeat(
-            this.sessions,
-            session => session.sessionId,
-            session => this._renderTab(session)
-          )}
+      this.sessions,
+      session => session.sessionId,
+      session => this._renderTab(session)
+    )}
         </div>
       </div>
     `;

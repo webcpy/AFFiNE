@@ -111,7 +111,7 @@ const conversionsActionGroup = {
           .button=${html`
             <editor-icon-button
               aria-label="Conversions"
-              .tooltip="${'Turn into'}"
+              .tooltip="${'转换为'}"
             >
               ${conversion.icon} ${EditorChevronDown}
             </editor-icon-button>
@@ -171,7 +171,7 @@ const alignActionGroup = {
         <editor-menu-button
           .contentPadding="${'8px'}"
           .button=${html`
-            <editor-icon-button aria-label="Align" .tooltip="${'Align'}">
+            <editor-icon-button aria-label="Align" .tooltip="${'对齐'}">
               ${alignment.icon} ${EditorChevronDown}
             </editor-icon-button>
           `}
@@ -239,7 +239,7 @@ const highlightActionGroup = {
 
 const turnIntoDatabase = {
   id: 'e.convert-to-database',
-  tooltip: 'Create Table',
+  tooltip: '创建表格',
   icon: DatabaseTableViewIcon(),
   when({ chain }) {
     const middleware = (count = 0) => {
@@ -286,7 +286,7 @@ const turnIntoDatabase = {
 
 const turnIntoLinkedDoc = {
   id: 'f.convert-to-linked-doc',
-  tooltip: 'Create Linked Doc',
+  tooltip: '创建链接文档',
   icon: LinkedPageIcon(),
   when({ chain, std }) {
     const supportFlavours = [
@@ -372,7 +372,7 @@ export const builtinToolbarConfig = {
       actions: [
         {
           id: 'copy',
-          label: 'Copy',
+          label: '复制',
           icon: CopyIcon(),
           run({ chain, host }) {
             const [ok] = chain
@@ -383,12 +383,12 @@ export const builtinToolbarConfig = {
 
             if (!ok) return;
 
-            toast(host, 'Copied to clipboard');
+            toast(host, '已复制到剪贴板');
           },
         },
         {
           id: 'duplicate',
-          label: 'Duplicate',
+          label: '创建副本',
           icon: DuplicateIcon(),
           run({ chain, store, selection }) {
             store.captureSync();
@@ -433,7 +433,7 @@ export const builtinToolbarConfig = {
       actions: [
         {
           id: 'delete',
-          label: 'Delete',
+          label: '删除',
           icon: DeleteIcon(),
           variant: 'destructive',
           run({ chain }) {

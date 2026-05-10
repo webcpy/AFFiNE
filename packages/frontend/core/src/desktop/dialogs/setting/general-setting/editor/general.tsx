@@ -223,7 +223,7 @@ const FontMenuItems = ({ onSelect }: { onSelect: (font: string) => void }) => {
                 )}
               />
             ) : (
-              <div className={styles.notFound}>No results found.</div>
+              <div className={styles.notFound}>无搜索结果.</div>
             )}
           </Scrollable.Viewport>
           <Scrollable.Scrollbar />
@@ -541,16 +541,16 @@ const AISettings = () => {
           : t['com.affine.settings.editorSettings.general.ai.disable.title'](),
         description: checked
           ? t[
-              'com.affine.settings.editorSettings.general.ai.enable.description'
-            ]()
+            'com.affine.settings.editorSettings.general.ai.enable.description'
+          ]()
           : t[
-              'com.affine.settings.editorSettings.general.ai.disable.description'
-            ](),
+            'com.affine.settings.editorSettings.general.ai.disable.description'
+          ](),
         confirmText: checked
           ? t['com.affine.settings.editorSettings.general.ai.enable.confirm']()
           : t[
-              'com.affine.settings.editorSettings.general.ai.disable.confirm'
-            ](),
+            'com.affine.settings.editorSettings.general.ai.disable.confirm'
+          ](),
         cancelText: t['Cancel'](),
         onConfirm: () => onAIChange(checked),
         confirmButtonOptions: {

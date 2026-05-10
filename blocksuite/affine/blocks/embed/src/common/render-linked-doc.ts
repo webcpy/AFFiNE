@@ -129,19 +129,19 @@ export function promptDocTitle(std: BlockStdScope, autofill?: string) {
   if (!notification) return Promise.resolve(undefined);
 
   return notification.prompt({
-    title: 'Create linked doc',
-    message: 'Enter a title for the new doc.',
-    placeholder: 'Untitled',
+    title: '创建链接文档',
+    message: '输入新文档的标题。',
+    placeholder: '无标题',
     autofill,
-    confirmText: 'Confirm',
-    cancelText: 'Cancel',
+    confirmText: '确认',
+    cancelText: '取消',
   });
 }
 
 export function notifyDocCreated(std: BlockStdScope) {
   std.getOptional(NotificationProvider)?.notifyWithUndoAction({
-    title: 'Linked doc created',
-    message: 'You can click undo to recovery block content',
+    title: '链接文档已创建',
+    message: '你可以点击撤销来恢复块内容',
     accent: 'info',
     duration: 10 * 1000,
   });

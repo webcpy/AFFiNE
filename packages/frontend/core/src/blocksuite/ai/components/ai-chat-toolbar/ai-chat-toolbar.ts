@@ -103,7 +103,7 @@ export class AIChatToolbar extends WithDisposable(ShadowlessElement) {
           data-testid="ai-panel-new-chat"
         >
           ${PlusIcon()}
-          <affine-tooltip>New Chat</affine-tooltip>
+          <affine-tooltip>新对话</affine-tooltip>
         </div>
         <div
           class="chat-toolbar-icon"
@@ -114,7 +114,7 @@ export class AIChatToolbar extends WithDisposable(ShadowlessElement) {
         >
           ${pinned ? PinedIcon() : PinIcon()}
           <affine-tooltip>
-            ${pinned ? 'Unpin this Chat' : 'Pin this Chat'}
+            ${pinned ? '取消置顶此对话' : '置顶此对话'}
           </affine-tooltip>
         </div>
         <div
@@ -123,7 +123,7 @@ export class AIChatToolbar extends WithDisposable(ShadowlessElement) {
           data-testid="ai-panel-chat-history"
         >
           ${HistoryIcon()}
-          <affine-tooltip>Chat History</affine-tooltip>
+          <affine-tooltip>对话历史</affine-tooltip>
         </div>
       </div>
     `;
@@ -132,7 +132,7 @@ export class AIChatToolbar extends WithDisposable(ShadowlessElement) {
   private readonly onPinClick = async () => {
     if (this.isGenerating) {
       this.notificationService.toast(
-        'Cannot pin a chat while generating an answer'
+        '生成回答时无法置顶对话'
       );
       return;
     }
@@ -143,18 +143,18 @@ export class AIChatToolbar extends WithDisposable(ShadowlessElement) {
     if (this.session && this.session.pinned) {
       try {
         const confirm = await this.notificationService.confirm({
-          title: 'Switch Chat? Current chat is pinned',
+          title: '切换对话？当前对话已置顶',
           message:
-            'Switching will unpinned the current chat. This will change the active chat panel, allowing you to navigate between different conversation histories.',
-          confirmText: 'Switch Chat',
-          cancelText: 'Cancel',
+            '切换将取消置顶当前对话。这将更改活动对话面板，允许您在不同的对话历史之间导航。',
+          confirmText: '切换对话',
+          cancelText: '取消',
         });
         if (!confirm) {
           return false;
         }
         await this.onTogglePin();
       } catch {
-        this.notificationService.toast('Failed to unpin the chat');
+        this.notificationService.toast('取消置顶对话失败');
       }
     }
     return true;
@@ -169,7 +169,7 @@ export class AIChatToolbar extends WithDisposable(ShadowlessElement) {
 
   private readonly onSessionClick = async (sessionId: string) => {
     if (this.session?.sessionId === sessionId) {
-      this.notificationService.toast('You are already in this chat');
+      this.notificationService.toast('您已在此对话中');
       return;
     }
     const confirm = await this.unpinConfirm();
@@ -180,7 +180,7 @@ export class AIChatToolbar extends WithDisposable(ShadowlessElement) {
 
   private readonly onDocClick = async (docId: string, sessionId: string) => {
     if (this.docId === docId && this.session?.sessionId === sessionId) {
-      this.notificationService.toast('You are already in this chat');
+      this.notificationService.toast('您已在此对话中');
       return;
     }
     this.onOpenDoc(docId, sessionId);

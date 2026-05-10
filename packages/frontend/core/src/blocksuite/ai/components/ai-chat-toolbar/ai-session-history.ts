@@ -299,39 +299,39 @@ export class AISessionHistory extends WithDisposable(ShadowlessElement) {
       <div class="ai-session-group">
         <div class="ai-session-group-title">${title}</div>
         ${sessions.map(session => {
-          return html`
+      return html`
             <div
               class="ai-session-item"
               @click=${(e: MouseEvent) => {
-                e.stopPropagation();
-                this.selectedSessionId = session.sessionId;
-                this.onSessionClick(session.sessionId);
-              }}
+          e.stopPropagation();
+          this.selectedSessionId = session.sessionId;
+          this.onSessionClick(session.sessionId);
+        }}
               aria-selected=${this.selectedSessionId === session.sessionId}
               data-session-id=${session.sessionId}
             >
               <div class="ai-session-title">
-                ${session.title || 'New chat'}
+                ${session.title || '新聊天'}
                 <affine-tooltip .offsetX=${60}>
-                  Click to open this chat
+                  单击打开此聊天
                 </affine-tooltip>
               </div>
               ${session.docId
-                ? this.renderSessionDoc(session.docId, session.sessionId)
-                : nothing}
+          ? this.renderSessionDoc(session.docId, session.sessionId)
+          : nothing}
               <div
                 class="ai-session-item-delete"
                 @click=${(e: MouseEvent) => {
-                  e.stopPropagation();
-                  this.onSessionDelete(session);
-                }}
+          e.stopPropagation();
+          this.onSessionDelete(session);
+        }}
               >
                 ${DeleteIcon()}
                 <affine-tooltip>Delete</affine-tooltip>
               </div>
             </div>
           `;
-        })}
+    })}
       </div>
     `;
   }
@@ -349,14 +349,14 @@ export class AISessionHistory extends WithDisposable(ShadowlessElement) {
     >
       ${docIcon}
       <span class="doc-title"> ${this.docDisplayConfig.getTitle(docId)} </span>
-      <affine-tooltip>Open this doc</affine-tooltip>
+      <affine-tooltip>打开此文档</affine-tooltip>
     </div>`;
   }
 
   private renderLoading() {
     return html`
       <div class="loading-container">
-        <div class="loading-title">Loading history...</div>
+        <div class="loading-title">加载历史记录...</div>
       </div>
     `;
   }
@@ -364,7 +364,7 @@ export class AISessionHistory extends WithDisposable(ShadowlessElement) {
   private renderEmpty() {
     return html`
       <div class="empty-container">
-        <div class="empty-title">Empty history</div>
+        <div class="empty-title">空历史记录</div>
       </div>
     `;
   }
@@ -380,10 +380,10 @@ export class AISessionHistory extends WithDisposable(ShadowlessElement) {
 
     const groupedSessions = this.groupSessionsByTime(this.sessions);
     return html`
-      ${this.renderSessionGroup('Today', groupedSessions.today)}
-      ${this.renderSessionGroup('Last 7 days', groupedSessions.last7Days)}
-      ${this.renderSessionGroup('Last 30 days', groupedSessions.last30Days)}
-      ${this.renderSessionGroup('Older', groupedSessions.older)}
+      ${this.renderSessionGroup('今天', groupedSessions.today)}
+      ${this.renderSessionGroup('过去7天', groupedSessions.last7Days)}
+      ${this.renderSessionGroup('过去30天', groupedSessions.last30Days)}
+      ${this.renderSessionGroup('更早', groupedSessions.older)}
     `;
   }
 

@@ -141,9 +141,9 @@ export function SharedDataTable<TData extends { id: string }, TValue>({
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                     </TableHead>
                   );
                 })}
@@ -187,7 +187,7 @@ export function SharedDataTable<TData extends { id: string }, TValue>({
                     colSpan={columns.length}
                     className="h-24 text-center flex-1"
                   >
-                    No results.
+                    无结果
                   </TableCell>
                 </TableRow>
               )}

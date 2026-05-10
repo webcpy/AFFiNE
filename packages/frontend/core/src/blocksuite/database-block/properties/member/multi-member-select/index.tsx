@@ -27,15 +27,15 @@ type BaseOptions = {
 
 export type MemberManagerOptions =
   | ({
-      multiple: true;
-      value: ReadonlySignal<string[]>;
-      onChange: (value: string[]) => void;
-    } & BaseOptions)
+    multiple: true;
+    value: ReadonlySignal<string[]>;
+    onChange: (value: string[]) => void;
+  } & BaseOptions)
   | ({
-      multiple: false;
-      value: ReadonlySignal<string>;
-      onChange: (value?: string) => void;
-    } & BaseOptions);
+    multiple: false;
+    value: ReadonlySignal<string>;
+    onChange: (value?: string) => void;
+  } & BaseOptions);
 
 class MemberManager {
   selectedMembers = computed(() => {
@@ -68,7 +68,7 @@ class MemberManager {
     }
   });
 
-  constructor(private readonly ops: MemberManagerOptions) {}
+  constructor(private readonly ops: MemberManagerOptions) { }
 
   get userService() {
     return this.ops.userService;
@@ -333,7 +333,7 @@ export const MultiMemberSelect: React.FC<MemberManagerOptions> = props => {
         <input
           ref={inputRef}
           className={styles.memberSearchInput}
-          placeholder={selectedMembers.length > 0 ? '' : 'Search members...'}
+          placeholder={selectedMembers.length > 0 ? '' : '搜索成员...'}
           value={memberManager.userListService.searchText$.value}
           onChange={handleInputChange}
         />
@@ -345,7 +345,7 @@ export const MultiMemberSelect: React.FC<MemberManagerOptions> = props => {
             Loading...
           </div>
         ) : filteredMemberList.length === 0 ? (
-          <div className={styles.noResultContainer}>No results</div>
+          <div className={styles.noResultContainer}>无结果</div>
         ) : (
           filteredMemberList.map(member => (
             <MemberListItem

@@ -144,11 +144,11 @@ export class ChatPanelAddPopover extends SignalWatcher(
   }
 
   private readonly tcGroup: MenuGroup = {
-    name: 'Tag & Collection',
+    name: '标签与精选',
     items: [
       {
         key: 'tags',
-        name: 'Tags',
+        name: '标签',
         testId: 'ai-chat-with-tags',
         icon: TagsIcon(),
         action: () => {
@@ -157,7 +157,7 @@ export class ChatPanelAddPopover extends SignalWatcher(
       },
       {
         key: 'collections',
-        name: 'Collections',
+        name: '精选',
         testId: 'ai-chat-with-collections',
         icon: CollectionsIcon(),
         action: () => {
@@ -187,18 +187,18 @@ export class ChatPanelAddPopover extends SignalWatcher(
   };
 
   private readonly uploadGroup: MenuGroup = {
-    name: 'Upload',
+    name: '上传',
     items: [
       {
         key: 'images',
-        name: 'Upload images',
+        name: '上传图片',
         testId: 'ai-chat-with-images',
         icon: ImageIcon(),
         action: this._addImageChip,
       },
       {
         key: 'files',
-        name: 'Upload files (pdf, txt, csv)',
+        name: '上传文件 (pdf, txt, csv)',
         testId: 'ai-chat-with-files',
         icon: UploadIcon(),
         action: this._addFileChip,
@@ -234,7 +234,7 @@ export class ChatPanelAddPopover extends SignalWatcher(
       }
       const more = {
         key: `${group.name} More`,
-        name: resolveSignal(group.overflowText) ?? 'more',
+        name: resolveSignal(group.overflowText) ?? '更多',
         icon: MoreHorizontalIcon(),
         action: () => {
           this._resetMaxDisplay(group);
@@ -326,11 +326,11 @@ export class ChatPanelAddPopover extends SignalWatcher(
   private _getPlaceholder() {
     switch (this._mode) {
       case AddPopoverMode.Tags:
-        return 'Search tags';
+        return '搜索标签';
       case AddPopoverMode.Collections:
-        return 'Search collections';
+        return '搜索精选';
       default:
-        return 'Search docs, tags, collections';
+        return '搜索文档、标签、精选';
     }
   }
 
@@ -339,7 +339,7 @@ export class ChatPanelAddPopover extends SignalWatcher(
   }
 
   private _renderNoResult() {
-    return html`<div class="no-result">No Result</div>`;
+    return html`<div class="no-result">无结果</div>`;
   }
 
   private _renderMenuGroup(groups: MenuGroup[]) {
@@ -367,11 +367,11 @@ export class ChatPanelAddPopover extends SignalWatcher(
   private _renderMenuItems(items: MenuItem[], startIndex: number) {
     return html`<div class="menu-items">
       ${repeat(
-        items,
-        item => item.key,
-        ({ key, name, icon, action, testId }, idx) => {
-          const curIdx = startIndex + idx;
-          return html`<icon-button
+      items,
+      item => item.key,
+      ({ key, name, icon, action, testId }, idx) => {
+        const curIdx = startIndex + idx;
+        return html`<icon-button
             width="280px"
             height="30px"
             data-id=${key}
@@ -384,8 +384,8 @@ export class ChatPanelAddPopover extends SignalWatcher(
           >
             ${icon}
           </icon-button>`;
-        }
-      )}
+      }
+    )}
     </div>`;
   }
 

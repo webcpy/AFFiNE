@@ -145,7 +145,7 @@ export class ChatInputPreference extends SignalWatcher(
     // model switch
     modelItems.push(
       menu.subMenu({
-        name: 'Model',
+        name: '模型',
         prefix: AiOutlineIcon(),
         middleware: modelSubMenuMiddleware,
         postfix: html`
@@ -178,7 +178,7 @@ export class ChatInputPreference extends SignalWatcher(
               select: () => {
                 if (model.isPro && !isSelfHosted && !isSubscribed) {
                   this.notificationService.toast(
-                    `Pro models require an AFFiNE AI subscription.`
+                    `专业版模型需要订阅 AFFiNE AI 会员.`
                   );
                   return;
                 }
@@ -192,7 +192,7 @@ export class ChatInputPreference extends SignalWatcher(
 
     modelItems.push(
       menu.toggleSwitch({
-        name: 'Extended Thinking',
+        name: '深度思考',
         prefix: ThinkingIcon(),
         on: this.extendedThinking,
         onChange: (value: boolean) => this.onExtendedThinkingChange?.(value),
@@ -202,7 +202,7 @@ export class ChatInputPreference extends SignalWatcher(
 
     searchItems.push(
       menu.toggleSwitch({
-        name: 'Workspace All Docs',
+        name: '工作区 - 所有文档',
         prefix: CloudWorkspaceIcon(),
         on:
           !!this.toolsConfigService.config.value.searchWorkspace &&

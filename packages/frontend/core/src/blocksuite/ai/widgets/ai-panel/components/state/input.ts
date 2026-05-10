@@ -122,26 +122,26 @@ export class AIPanelInput extends SignalWatcher(WithDisposable(LitElement)) {
 
       textarea::placeholder {
         color: ${unsafeCSS(
-          lightCssVariablesV2['--affine-v2-text-placeholder']
-        )};
+    lightCssVariablesV2['--affine-v2-text-placeholder']
+  )};
       }
 
       textarea::-moz-placeholder {
         color: ${unsafeCSS(
-          lightCssVariablesV2['--affine-v2-text-placeholder']
-        )};
+    lightCssVariablesV2['--affine-v2-text-placeholder']
+  )};
       }
 
       .arrow {
         background: ${unsafeCSS(
-          lightCssVariablesV2['--affine-v2-icon-disable']
-        )};
+    lightCssVariablesV2['--affine-v2-icon-disable']
+  )};
       }
 
       .arrow[data-active='true'] {
         background: ${unsafeCSS(
-          lightCssVariablesV2['--affine-v2-icon-activated']
-        )};
+    lightCssVariablesV2['--affine-v2-icon-activated']
+  )};
       }
 
       .arrow svg {
@@ -172,14 +172,14 @@ export class AIPanelInput extends SignalWatcher(WithDisposable(LitElement)) {
 
       .arrow {
         background: ${unsafeCSS(
-          darkCssVariablesV2['--affine-v2-icon-disable']
-        )};
+    darkCssVariablesV2['--affine-v2-icon-disable']
+  )};
       }
 
       .arrow[data-active='true'] {
         background: ${unsafeCSS(
-          darkCssVariablesV2['--affine-v2-icon-activated']
-        )};
+    darkCssVariablesV2['--affine-v2-icon-activated']
+  )};
       }
 
       .arrow svg {
@@ -220,7 +220,7 @@ export class AIPanelInput extends SignalWatcher(WithDisposable(LitElement)) {
       <div class="star">${AIStarIcon}</div>
       <div class="textarea-container">
         <textarea
-          placeholder="What are your thoughts?"
+          placeholder="你有什么想法？"
           rows="1"
           @keydown=${this._onKeyDown}
           @input=${this._onInput}
@@ -240,8 +240,8 @@ export class AIPanelInput extends SignalWatcher(WithDisposable(LitElement)) {
         >
           ${SendIcon()}
           ${this._hasContent
-            ? html`<affine-tooltip .offsetY=${12}>Send to AI</affine-tooltip>`
-            : nothing}
+        ? html`<affine-tooltip .offsetY=${12}>Send to AI</affine-tooltip>`
+        : nothing}
         </div>
       </div>
     </div>`;

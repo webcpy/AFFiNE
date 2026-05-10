@@ -24,7 +24,9 @@ export async function addFilesToChat(
   await Promise.all(
     others.map(async file => {
       if (file.size > MAX_ATTACHMENT_SIZE) {
-        toast(`${file.name} is too large, please upload a file less than 50MB`);
+        toast(
+          `${file.name} 文件大小不能超过 50MB，请上传更小的文件`
+        );
         return;
       }
       await addChip({
